@@ -13,6 +13,7 @@ type MongoStatus = {
   ok: boolean;
   title: string;
 };
+console.log("test");
 
 function getMongoMetadata(uri: string) {
   try {
@@ -74,10 +75,9 @@ async function checkMongoConnection(): Promise<MongoStatus> {
       checkedAt,
       ...metadata,
       latencyMs: Date.now() - startedAt,
-      message:
-        isConnected
-          ? "Atlas replied to the server-side ping."
-          : `MongoDB replied with ok=${response.ok}.`,
+      message: isConnected
+        ? "Atlas replied to the server-side ping."
+        : `MongoDB replied with ok=${response.ok}.`,
       ok: isConnected,
       title: isConnected ? "MongoDB connected" : "MongoDB replied",
     };
